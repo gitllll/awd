@@ -41,8 +41,8 @@ class ImageProcessor:
 
         self.temp_dir = TEMP_DIR
         self.allowlist = 'АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюяABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_,.?!:;/()@_&%+–—"\''
-        self.textCorrector = self.TextCorrector()
-
+        self.textCorrector = self.TextCorrector('./pn/ru_RU.dic', './pn/ru_RU.aff', './pn/en_US.dic', './pn/en_US.aff')
+        
     def data_in_image(self, image_path: str) -> dict:
         """Обнаружение и извлечение текстовых данных из изображения с помощью OCR."""
         image = cv2.imread(image_path)
