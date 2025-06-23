@@ -110,20 +110,19 @@ class ImageProcessor:
         name = "Имена:"
         
         for span in doc.spans:
-            if span.type == 'PER':  # Персона
+            if span.type == 'PER':  
                 name += f'{span.text}, '
-            elif span.type == 'LOC':  # Локация
+            elif span.type == 'LOC': 
                 objects += f'{span.text}, '
-            elif span.type == 'ORG':  # Организация
+            elif span.type == 'ORG': 
                 subjects += f'{span.text}, '
-            elif span.type == 'DATE':  # Дата
+            elif span.type == 'DATE':
                 date += f'{span.text}, '
         
-        # Анализ синтаксических зависимостей для субъектов/объектов
         for token in doc.tokens:
-            if token.rel == 'nsubj':  # Субъект
+            if token.rel == 'nsubj':
                 subjects += f'{token.text}, '
-            elif token.rel in ('obj', 'obl'):  # Объект
+            elif token.rel in ('obj', 'obl'):  
                 objects += f'{token.text}, '
         
         results = f"\nМорфологический анализ: {objects}; {subjects}; {name}; {date}."
